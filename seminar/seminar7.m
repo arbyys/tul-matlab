@@ -7,7 +7,7 @@ format long;
 global i
 i = 0;
 
-y = pulint(0, 10, @funkce, 0. )
+y = pulint(0.1, 10000, @funkce, 0.0001)
 i
 
 function out=pulint(a,b,f,eps)
