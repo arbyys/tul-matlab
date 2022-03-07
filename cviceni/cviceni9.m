@@ -2,7 +2,6 @@ clc;
 clear all;
 close all;
 
-
 % 1)
 x = -10:00.1:10;
 y = (sin(x))./(x) + exp(-(x-4).^2);
