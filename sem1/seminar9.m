@@ -28,11 +28,3 @@ function out=zintegruj(x,y)
     end
     out = integrace;
 end
-
-function out=integral(x,y)
-    integrace = 0;
-    for i = 2:length(x)
-        integrace = integrace + (0.5*(x(i)-x(i-1))*(y(i-1)+y(i)));
-    end
-    out = integrace;
-end
