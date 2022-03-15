@@ -1,6 +1,6 @@
 clear; clc; close all;
 
-A = [0 2 0; 1 1 0; 0 0 3];
+A = [2 4; 1 2];
 b = [1; 1; 1];
 [x, U] = gauss_elim(A, b)
 
@@ -19,6 +19,7 @@ function [x, U] = gauss_elim(A,b)
             end
         end
         if(max <= 1e-15)
+            xDDmax
             error('singular');
         end
         if(pivotRowNumber ~= colIndex)
