@@ -19,7 +19,6 @@ function [x, U] = gauss_elim(A,b)
             end
         end
         if(max <= 1e-15)
-            xDDmax
             error('singular');
         end
         if(pivotRowNumber ~= colIndex)
