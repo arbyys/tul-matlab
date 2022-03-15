@@ -1,8 +1,8 @@
 clear; clc; close all;
 
-A = [1 2 3; 4 5 6; 7 8 1];
+A = [0 2 0; 1 1 0; 0 0 3];
 b = [1; 1; 1];
-[x, U] = gauss_elim(A, b);
+[x, U] = gauss_elim(A, b)
 
 function [x, U] = gauss_elim(A,b)
     s = size(A, 2);
@@ -17,6 +17,9 @@ function [x, U] = gauss_elim(A,b)
                 max = A(rowIndex, colIndex);
                 pivotRowNumber = rowIndex;
             end
+        end
+        if(max <= 1e-15)
+            error('singular');
         end
         if(pivotRowNumber ~= colIndex)
             A([colIndex pivotRowNumber],:)=A([pivotRowNumber colIndex],:); % prohození řádků u matice
@@ -41,7 +44,25 @@ function [x, U] = gauss_elim(A,b)
 
     % <jordanova eliminace>
 
+    for colIndex = s:-1:1
+        % <vynulování sloupce>
+        for rowIndex = colIndex-1:-1:1
+            pivot = A(colIndex, colIndex);
+            currentRow = A(colIndex,:);
+            currentNum = A(rowIndex, colIndex);
+            A(rowIndex,:) = A(rowIndex,:) - (currentRow .* (currentNum / pivot));
+            b(rowIndex) = b(rowIndex) - (b(colIndex) .* (currentNum / pivot));
+        end
+        % </vynulování sloupce>
+    end
+
     % </jordanova eliminace>
 
-    x = NaN;
+    % <vydělení všech řádků číslem na diagonále>
+    for i=1:size(b,1)
+        b(i) = b(i) / A(i,i);
+    end
+    % </vydělení všech řádků číslem na diagonále>
+    
+    x = b; % vrácení vektoru řešení
 end
