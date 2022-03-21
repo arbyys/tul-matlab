@@ -20,7 +20,7 @@ function [x,flag,rr,it,rv] = gauss_seidel(A,b,tol,maxit)
 
   %ALGORITHM:
   %
-  x = 
+  x = b;
   % choose initial guess (e.g. x0 = b)
   x0 = b;
   % compute residue of the first aproximation (initial guess) - first element of vector rv
@@ -32,7 +32,7 @@ function [x,flag,rr,it,rv] = gauss_seidel(A,b,tol,maxit)
   % cycle for/while over iterations
     for i = 0:size(A)
   %   cycle i over size of matrix A
-      x(i) = 
+      x = 
   %      compute new aproximation of x(i) - use already computed x(k), k<i
     end
   %   end of cycle i
