@@ -2,7 +2,7 @@ clear;
 clc;
 close all;
 
-file = load("data0.mat", '-ascii');
+file = load("data/data0.mat", '-ascii');
 xIn = file(:,1).';
 yIn = file(:,2).';
 xqIn = min(xIn)-1:0.1:max(xIn);
@@ -16,7 +16,7 @@ saveas(gcf,'graph_data0.png');
 
 %
 
-file = load("data1.mat", '-ascii');
+file = load("data/data1.mat", '-ascii');
 xIn = file(:,1).';
 yIn = file(:,2).';
 xqIn = min(xIn)-1:0.1:max(xIn);
@@ -30,7 +30,7 @@ saveas(gcf,'graph_data1.png');
 
 %
 
-file = load("data2.mat", '-ascii');
+file = load("data/data2.mat", '-ascii');
 xIn = file(:,1).';
 yIn = file(:,2).';
 xqIn = min(xIn)-1:0.1:max(xIn);
@@ -43,7 +43,7 @@ saveas(gcf,'graph_data2.png');
 
 %
 
-file = load("data3.mat", '-ascii');
+file = load("data/data3.mat", '-ascii');
 xIn = file(:,1).';
 yIn = file(:,2).';
 xqIn = min(xIn)-1:0.1:max(xIn);

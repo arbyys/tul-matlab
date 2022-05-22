@@ -2,7 +2,7 @@ clf;
 clc;
 clear;
 
-data = readtable('insurance.csv');
+data = readtable('data/insurance.csv');
 smokers = data(strcmp(data.smoker, 'yes'), :);
 nonsmokers = data(strcmp(data.smoker, 'no'), :);
 

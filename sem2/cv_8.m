@@ -3,7 +3,7 @@ clc;
 close all;
 
 KMH_TO_MS = 5/18;
-input = load("velocity.mat", '-ascii');
+input = load("data/velocity.mat", '-ascii');
 time = input(1, :);
 speed = input(2, :);
 a = [];
