@@ -1,18 +1,23 @@
-% pozice satelitu
-x1 = [20180; 21800; 24600];
-x2 = [25300; 21400; 23000];
-x3 = [22200; 20200; 22600];
+clear;
+clc;
+close all;
 
-% vzdalenost satelitu
-d1 = 3.853416925275540e+04;
-d2 = 4.030272199244115e+04;
-d3 = 3.753709365414429e+04;
+gps_tracking_data
 
-f = @(x) []
+format short;
 
-function res = calculate_width(x1, x2)
-    res = sqrt((a(1) - b(1))^2 + (a(2) - b(2))^2 + (a(3) + b(3))^2)
-end
+d = @(a, b) sqrt((a(1) - b(1))^2 + (a(2) - b(2))^2 + (a(3) - b(3))^2);
+
+F = @(x) [d(x,x1)-d1; 
+          d(x,x2)-d2;
+          d(x,x3)-d3
+         ];
+J = @(x) [(x-x1)'/d(x,x1);
+          (x-x2)'/d(x,x2);
+          (x-x3)'/d(x,x3)
+         ];
+
+[x, k] = newton_raphson(F, J, [1;1;1], 1e-7, 100)
 
 function [x, k] = newton_raphson(f,J,x0,tol,maxit)
     %
